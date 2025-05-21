@@ -3,7 +3,7 @@ package com.shimuli
 import com.shimuli.handler.CardHandler
 import io.vertx.core.AbstractVerticle
 import io.vertx.core.Promise
-import io.vertx.core.json.jackson.DatabindCodec
+
 import io.vertx.ext.web.Router
 import io.vertx.ext.web.handler.BodyHandler
 import io.vertx.ext.web.handler.LoggerHandler
