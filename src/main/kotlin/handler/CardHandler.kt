@@ -5,9 +5,6 @@ import com.shimuli.validation.CardValidator
 import io.vertx.core.Vertx
 import io.vertx.core.json.Json
 import io.vertx.ext.web.RoutingContext
-import io.vertx.ext.web.client.WebClient
-import io.vertx.ext.web.client.WebClientOptions
-import io.vertx.ext.web.codec.BodyCodec
 
 object CardHandler {
 
