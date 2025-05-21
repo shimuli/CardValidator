@@ -35,7 +35,7 @@ object CardService {
                         promise.complete(response.body())
                     } else {
                         val errorDetails = "API responded with ${response.statusCode()} - ${response.body()}"
-                        println("⚠️ External API error: $errorDetails")
+                        println("External API error: $errorDetails")
                         promise.fail(errorDetails)
                     }
                 } else {
