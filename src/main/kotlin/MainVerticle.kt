@@ -1,6 +1,7 @@
 package com.shimuli
 
 import com.shimuli.handler.CardHandler
+import com.shimuli.services.TokenService
 import io.vertx.core.AbstractVerticle
 import io.vertx.core.Promise
 
@@ -16,6 +17,10 @@ class MainVerticle : AbstractVerticle() {
         val router = Router.router(vertx)
 
         CardHandler.init(vertx)
+
+        TokenService.init(vertx)
+        TokenService.startAutoRefresh(vertx)
+
 
         router.route().handler(BodyHandler.create())
         router.route().handler(LoggerHandler.create())

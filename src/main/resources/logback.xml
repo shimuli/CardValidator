@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <!-- Add context properties -->
+    <property name="LOG_DIR" value="logs" />
+    <property name="LOG_FILE" value="${LOG_DIR}/card-service.json" />
+
+    <!-- Console Appender (optional for development) -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"service":"card-service","environment":"dev"}</customFields>
+        </encoder>
+    </appender>
+
+    <!-- File Appender with Daily Rolling Policy -->
+    <appender name="JSON_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Rotate daily -->
+            <fileNamePattern>${LOG_DIR}/card-service.%d{yyyy-MM-dd}.json</fileNamePattern>
+            <!-- Keep 14 days of logs -->
+            <maxHistory>14</maxHistory>
+        </rollingPolicy>
+
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <!-- Optional custom fields -->
+            <customFields>{"service":"card-service","environment":"dev"}</customFields>
+            <!-- UTF-8 for safety -->
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- Root Logger -->
+    <root level="INFO">
+        <appender-ref ref="JSON_FILE" />
+        <!-- Optionally enable console for development -->
+        <!-- <appender-ref ref="CONSOLE" /> -->
+    </root>
+
+</configuration>
